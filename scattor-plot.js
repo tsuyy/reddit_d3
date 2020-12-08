@@ -6,21 +6,21 @@ async function drawScatter() {
   const dateParser = d3.timeParse('%Y-%m-%d');
   const xAccessor = d => dateParser(d['timestamp']);
   const yAccessor = d => +d.calculated_sentiment
-//   const colorAccessor = d => d.upvote_ratio
+//   const colorAccessor = d => +d.upvote_ratio
   const flair = d => d.flair
-  const flairColorMap = new Map([["Support", '#224dab'], 
-                                 ["Discussion", '#3168b6'], 
-                                 ["Question", '#3f83c0'], 
-                                 ["Firsthand Account", '#4e9eca'], 
-                                 ["News", '#63b9d3'], 
-                                 ["NA", '#82d3dc'],
-                                 ["Trigger Warning", '#dfdfdf'],
-                                 ["Resources", '#decace'],
-                                 ["Good News", '#c1a9b4'],
-                                 ["Misinformation - debunked", '#a48a95'],
-                                 ["Missleading and incorrect title", '#866d76'],
-                                 ["Deperate Mod", '#695257'],
-                                 ["The answer is NO.", '#4d3839']]);
+  const flairColorMap = new Map([["Support", '#0000a4'], 
+                                 ["Discussion", '#d4d4d4'], 
+                                 ["Questions", '#391dcd'], 
+                                 ["Firsthand Account", '#512ed7'], 
+                                 ["News", '#7951e2'], 
+                                 ["NA", '#cac0d9'],
+                                 ["Trigger Warning", '#8a63e4'],
+                                 ["Resources", '#9a75e4'],
+                                 ["Good News", '#a888e3'],
+                                 ["Misinformation - debunked", '#b49ae1'],
+                                 ["Missleading and incorrect title", '#c0adde'],
+                                 ["Deperate mod", '#0a3262'],
+                                 ["The answer is NO.", '#1c0abe']]);
 
   // 2. Create chart dimensions
 
@@ -58,6 +58,7 @@ async function drawScatter() {
       }px, ${
         dimensions.margin.top
       }px)`)
+
 
   // 4. Create scales
 
@@ -97,15 +98,6 @@ const drawDots = (dataset) => {
         .remove()
   }
   drawDots(dataset)
-
-//   const dots = bounds.selectAll("circle")
-//     .data(dataset)
-//     .enter().append("circle")
-//       .attr("cx", d => xScale(xAccessor(d)))
-//       .attr("cy", d => yScale(yAccessor(d)))
-//       .attr("r", 4)
-//       .attr("fill", d => colorScale(colorAccessor(d)))
-//       .attr("tabindex", "0")
 
   // 6. Draw peripherals
 
@@ -154,40 +146,57 @@ const drawDots = (dataset) => {
     .append("path")
       .attr("class", "voronoi")
       .attr("d", (d,i) => voronoi.renderCell(i))
-      .attr("stroke", "cornflowerblue")
+    //   .attr("stroke", "cornflowerblue")
       .on("mouseenter", onMouseEnter)
       .on("mouseleave", onMouseLeave)
 
   const tooltip = d3.select("#tooltip")
 
-  function onMouseEnter(datum) {
-  console.log(datum)
+  function onMouseEnter(mouseenter, datum) {
+
     const postDot = bounds.append("circle")
         .attr("class", "tooltipDot")
         .attr("cx", xScale(xAccessor(datum)))
         .attr("cy", yScale(yAccessor(datum)))
         .attr("r", 7)
-        .style("fill", "maroon")
+        .style("fill", "orange")
         .style("pointer-events", "none")
 
     const formatSentiment = d3.format(".2f")
-    tooltip.select("#sentitment")
-        .text(formatSentiment(yAccessor(datum)))
+    tooltip.select("#sentiment")
+        .text(formatSentiment(datum.calculated_sentiment))
 
-    // const dateParser = d3.timeParse("%Y-%m-%d")
-    const formatDate = d3.timeFormat("%Y-%m-%d")
+    tooltip.select("#title")
+        .text(datum.title)
+
+    if (datum.body != "NA") {
+        tooltip.select("#body")
+            .text(datum.body)
+    } else {
+        tooltip.select("#body")
+            .text("Empty body")
+    }
+    
+    tooltip.select("#url")
+        .html(`<a href="${datum.url}">View post</a>`)
+
+    tooltip.select("#flair")
+        .text(datum.flair)
+
+    const dateParser = d3.timeParse("%Y-%m-%d")
+    const formatDate = d3.timeFormat("%B %-d, %Y")
     tooltip.select("#date")
-        .text(formatDate(dateParser(xAccessor(datum))))
+        .text(formatDate(dateParser(datum.timestamp)))
 
-    // const x = xScale(xAccessor(datum))
-    //   + dimensions.margin.left
-    // const y = yScale(yAccessor(datum))
-    //   + dimensions.margin.top
+    const x = xScale(xAccessor(datum))
+      + dimensions.margin.left
+    const y = yScale(yAccessor(datum))
+      + dimensions.margin.top
 
-    // tooltip.style("transform", `translate(`
-    //   + `calc( -50% + ${x}px),`
-    //   + `calc(-100% + ${y}px)`
-    //   + `)`)
+    tooltip.style("transform", `translate(`
+      + `calc( -50% + ${x}px),`
+      + `calc(-100% + ${y}px)`
+      + `)`)
 
     tooltip.style("opacity", 1)
   }
@@ -196,7 +205,7 @@ const drawDots = (dataset) => {
     d3.selectAll(".tooltipDot")
       .remove()
 
-    tooltip.style("opacity", 0)
+    tooltip.style("opacity", 1)
   }
 }
 drawScatter()

@@ -37,13 +37,14 @@ body {
     left: 0;
     padding: 0.6em 1em;
     background: #fff;
-    text-align: center;
+    text-align: left;
     line-height: 1.4em;
     font-size: 0.9em;
     border: 1px solid #ddd;
     z-index: 10;
     transition: all 0.1s ease-out;
     pointer-events: none;
+    width: 30vw;
 }
 
 .tooltip:before {
@@ -62,9 +63,16 @@ body {
     z-index: 10;
 }
 
-.tooltip-date {
+.tooltip-date, 
+.tooltip-post #body,
+.tooltip-sentiment,
+.tooltip-flair {
     margin-bottom: 0.2em;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1.1em;
     line-height: 1.4em;
+}
+
+.tooltip-post #title {
+    font-weight: 600;
 }
