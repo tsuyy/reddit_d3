@@ -10,7 +10,7 @@ async function drawScatter() {
   const flair = d => d.flair
   const flairColorMap = new Map([["Support", '#0000a4'], 
                                  ["Discussion", '#d4d4d4'], 
-                                 ["Questions", '#391dcd'], 
+                                 ["Questions", '#c0adde'], 
                                  ["Firsthand Account", '#512ed7'], 
                                  ["News", '#7951e2'], 
                                  ["NA", '#cac0d9'],
@@ -18,7 +18,7 @@ async function drawScatter() {
                                  ["Resources", '#9a75e4'],
                                  ["Good News", '#a888e3'],
                                  ["Misinformation - debunked", '#b49ae1'],
-                                 ["Missleading and incorrect title", '#c0adde'],
+                                 ["Missleading and incorrect title", '#391dcd'],
                                  ["Deperate mod", '#0a3262'],
                                  ["The answer is NO.", '#1c0abe']]);
 
@@ -218,7 +218,7 @@ svg.append("circle").attr("cx",200).attr("cy",160).attr("r", 6).style("fill", "#
 svg.append("text").attr("x", 220).attr("y", 160).text("Support").style("font-size", "15px").attr("alignment-baseline","middle")
 svg.append("circle").attr("cx",200).attr("cy",190).attr("r", 6).style("fill", "#391dcd")
 svg.append("circle").attr("cx",200).attr("cy",220).attr("r", 6).style("fill", "#512ed7")
-svg.append("text").attr("x", 220).attr("y", 190).text("Questions").style("font-size", "15px").attr("alignment-baseline","middle")
+svg.append("text").attr("x", 220).attr("y", 190).text("Missleading and incorrect title").style("font-size", "15px").attr("alignment-baseline","middle")
 svg.append("text").attr("x", 220).attr("y", 220).text("Firsthand Account").style("font-size", "15px").attr("alignment-baseline","middle")
 svg.append("circle").attr("cx",200).attr("cy",250).attr("r", 6).style("fill", "#7951e2")
 svg.append("circle").attr("cx",200).attr("cy",280).attr("r", 6).style("fill", "#8a63e4")
@@ -231,22 +231,8 @@ svg.append("text").attr("x", 220).attr("y", 340).text("Good News").style("font-s
 svg.append("circle").attr("cx",200).attr("cy",370).attr("r", 6).style("fill", "#b49ae1")
 svg.append("circle").attr("cx",200).attr("cy",400).attr("r", 6).style("fill", "#c0adde")
 svg.append("text").attr("x", 220).attr("y", 370).text("Misinformation - debunked").style("font-size", "15px").attr("alignment-baseline","middle")
-svg.append("text").attr("x", 220).attr("y", 400).text("Missleading and incorrect title").style("font-size", "15px").attr("alignment-baseline","middle")
+svg.append("text").attr("x", 220).attr("y", 400).text("Questions").style("font-size", "15px").attr("alignment-baseline","middle")
 svg.append("circle").attr("cx",200).attr("cy",430).attr("r", 6).style("fill", "#cac0d9")
 svg.append("text").attr("x", 220).attr("y", 430).text("NA").style("font-size", "15px").attr("alignment-baseline","middle")
 svg.append("circle").attr("cx",200).attr("cy",460).attr("r", 6).style("fill", "#d4d4d4")
 svg.append("text").attr("x", 220).attr("y", 460).text("Discussion").style("font-size", "15px").attr("alignment-baseline","middle")
-
-// ["Support", '#0000a4'], 
-//                                  ["Discussion", '#d4d4d4'], 
-//                                  ["", ''], 
-//                                  ["", ''], 
-//                                  ["", ''], 
-//                                  ["NA", '#cac0d9'],
-//                                  ["", ''],
-//                                  ["", ''],
-//                                  ["", ''],
-//                                  ["", ''],
-//                                  ["", ''],
-//                                  ["Deperate mod", '#0a3262'],
-//                                  ["The answer is NO.", '#1c0abe']
