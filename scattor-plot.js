@@ -117,10 +117,9 @@ const drawDots = (dataset) => {
       .style("transform", `translateY(${dimensions.boundedHeight}px)`)
 
   const xAxisLabel = xAxis.append("text")
+      .attr("class", "x-axis-label")
       .attr("x", dimensions.boundedWidth / 2)
       .attr("y", dimensions.margin.bottom - 10)
-      .attr("fill", "black")
-      .style("font-size", "1.4em")
       .html("Month")
 
   const yAxisGenerator = d3.axisLeft()
@@ -131,12 +130,10 @@ const drawDots = (dataset) => {
       .call(yAxisGenerator)
 
   const yAxisLabel = yAxis.append("text")
+      .attr("class", "y-axis-label")
       .attr("x", -dimensions.boundedHeight / 2)
       .attr("y", -dimensions.margin.left + 10)
-      .attr("fill", "black")
-      .style("font-size", "1.4em")
       .text("Sentiment")
-      .style("transform", "rotate(-90deg)")
       .style("text-anchor", "middle")
 
 // 7. Set up interactions
@@ -153,27 +150,29 @@ const drawDots = (dataset) => {
 
   bounds.selectAll(".voronoi")
     .data(dataset)
-    .enter().append("path")
+    .enter()
+    .append("path")
       .attr("class", "voronoi")
       .attr("d", (d,i) => voronoi.renderCell(i))
-    //   .attr("stroke", "salmon")
-      .on("mouseover", onMouseEnter)
+      .attr("stroke", "cornflowerblue")
+      .on("mouseenter", onMouseEnter)
       .on("mouseleave", onMouseLeave)
 
   const tooltip = d3.select("#tooltip")
 
   function onMouseEnter(datum) {
+  console.log(datum)
     const postDot = bounds.append("circle")
         .attr("class", "tooltipDot")
-        .attr("cx", xScale(xAccessor(datum)))
-        .attr("cy", yScale(yAccessor(datum)))
+        .attr("cx", d => xScale(xAccessor(datum)))
+        .attr("cy", d => yScale(yAccessor(datum)))
         .attr("r", 7)
         .style("fill", "maroon")
         .style("pointer-events", "none")
- 
-    const formatCS = d3.format(".2f")
-    tooltip.select("#calculated_sentitment")
-        .text(formatCS(yAccessor(datum)))
+
+    const formatSentiment = d3.format(".2f")
+    tooltip.select("#sentitment")
+        .text(formatSentiment(yAccessor(datum)))
 
     // const dateParser = d3.timeParse("%Y-%m-%d")
     const formatDate = d3.timeFormat("%Y-%m-%d")
