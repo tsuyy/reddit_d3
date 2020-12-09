@@ -7,6 +7,18 @@
 
 </head>
 <body>
+    <section></section>
+    <div id="dropdown">
+        <p><span><label for="y-axis">Y Axis</label></span></p>
+        <select id="y-value">
+            <option value="Score">Score</option>
+            <option value="Sentiment">Sentiment</option>
+            <option value="Upvote Ratio">Upvote Ratio</option>
+            <option value="Number of Comments">Number of Comments</option> 
+        </select>
+        <button onclick="setGraph()">submit</button>
+    </div>
+
     <div id="wrapper" class="wrapper">
         <div id="tooltip" class="tooltip">
             <div class="tooltip-date">
@@ -16,16 +28,16 @@
                 <h3 id="title"></h3>
                 <span id="body"></span>
             </div>
-            <div class="tooltip-sentiment"></br>
+            <!-- <div class="tooltip-sentiment"></br>
                 Sentiment: <span id="sentiment"></span>
-            </div>
+            </div> -->
             <div class="tooltip-flair"></br>
-                Flair: <span id="flair"></span>
+                <button id="flair"></button>
             </div>
         </div>
     </div>
     <div>
-        <svg id="legend" height=600 width=450></svg>
+        <svg id="legend" height=80vh width=25vw></svg>
     </div>
 
     <script src="d3-delaunay.min.js"></script>

@@ -1,11 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Trispace:wght@200;300;500&display=swap');
+
 .wrapper {
     position: relative;
+    margin-top: 5vh;
 }
 
 .x-axis-label {
     fill: black;
     font-size: 1.4em;
     text-transform: capitalize;
+    font-family: Trispace, sans-serif;
+    margin-top: 5vh;
 }
 
 .y-axis-label {
@@ -13,6 +18,8 @@
     font-size: 1.4em;
     text-anchor: middle;
     transform: rotate(-90deg);
+    font-family: Trispace, sans-serif;
+    margin-right: 5vw;
 }
 
 /* circle {
@@ -27,7 +34,12 @@ body {
     display: flex;
     justify-content: center;
     padding: 3em 1em;
-    font-family: sans-serif;
+    font-family: Trispace, sans-serif;
+
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 .tooltip {
@@ -38,14 +50,14 @@ body {
     padding: 0.6em 1em;
     background: #fff;
     text-align: left;
-    line-height: 1.4em;
+    line-height: 1.6em;
     font-size: 0.9em;
     border: 1px solid #ddd;
     z-index: 10;
-    transition: all 0.1s ease-out;
+    transition: all .3s ease-in-out; 
     pointer-events: none;
-    width: 30vw;
-}
+    width: 28vw;
+    overflow: hidden;}
 
 .tooltip:before {
     content: '';
@@ -66,13 +78,34 @@ body {
 .tooltip-date, 
 .tooltip-post #body,
 .tooltip-sentiment,
-.tooltip-flair {
+.tooltip-flair button {
     margin-bottom: 0.2em;
-    font-weight: 500;
-    font-size: 1.1em;
+    font-weight: 300;
+    font-size: 1em;
     line-height: 1.4em;
+    font-family: Trispace, sans-serif;
 }
 
 .tooltip-post #title {
-    font-weight: 600;
+    font-weight: 500;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+#dropdown {
+    display: block;
+    position: absolute;
+    bottom: 85vh;
+    margin: 0 auto;
+}
+
+button#flair {
+    padding: 10px;
+    border: none;
+    color: white;
 }
