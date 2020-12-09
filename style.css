@@ -150,7 +150,7 @@ button#flair {
 and (min-device-width : 100px) 
 and (max-device-width : 515px) {
     .tooltip {
-        width: 90vw;
+        width: 90vw!important;
     }
 
     .m-hide {
