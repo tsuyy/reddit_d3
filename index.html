@@ -4,44 +4,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css" type="text/css"></link>
     <title>Reddit Project ~ Scatter Plot</title>
-
+        <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <section></section>
-    <!-- <div id="dropdown">
-        <p><span><label for="y-axis">Y Axis</label></span></p>
-        <select id="y-value">
-            <option value="Score">Score</option>
-            <option value="Sentiment">Sentiment</option>
-            <option value="Upvote Ratio">Upvote Ratio</option>
-            <option value="Number of Comments">Number of Comments</option> 
-        </select>
-        <button onclick="setGraph()">submit</button>
-    </div> -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h2>A reflection on how much I learned while failing miserably to find a story to tell</h2>
 
-    <div id="wrapper" class="wrapper">
-        <div id="tooltip" class="tooltip">
-            <div class="tooltip-date">
-                <span id="date"></span>
-            </div>
-            <div class="tooltip-post">
-                <h3 id="title"></h3>
-                <span id="body"></span>
-            </div>
-            <!-- <div class="tooltip-sentiment"></br>
-                Sentiment: <span id="sentiment"></span>
-            </div> -->
-            <div class="tooltip-flair"></br>
-                <button id="flair"></button>
             </div>
         </div>
-    </div>
-    <div>
-        <svg id="legend" height=80vh width=25vw></svg>
-    </div>
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <!-- <div id="dropdown">
+                    <p><span><label for="y-axis">Toggle y-axis</label></span></p>
+                    <select id="y-value" class="selectpicker">
+                        <option value="Score">Score</option>
+                        <option value="Sentiment">Sentiment</option>
+                        <option value="Upvote Ratio">Upvote Ratio</option>
+                        <option value="Number of Comments">Number of Comments</option> 
+                    </select>
+                    <button class="btn" onclick="setGraph()">submit</button>
+                </div> -->
+                <div id="wrapper" class="wrapper svg-container">
+                    <div id="tooltip" class="tooltip">
+                        <div class="tooltip-date">
+                            <span id="date"></span>
+                        </div>
+                        <div class="tooltip-post">
+                            <h6 id="title"></h6>
+                            <span id="body"></span>
+                        </div>
+                        <!-- <div class="tooltip-sentiment"></br>
+                            Sentiment: <span id="sentiment"></span>
+                        </div> -->
+                        <div class="tooltip-flair"></br>
+                            <button id="flair"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <svg id="legend" class="m-hide"></svg>
+                </div>
+            </div>
+        </div>
 
+                
+
+        
+    </div>
+    
+    <!-- d3 + delaunay -->
     <script src="d3-delaunay.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.3.0/d3.min.js" integrity="sha512-wKo55+1oH5DGJ19ScVUHTtcZiqJuSnknSs8CgzzEm1lNftJRDXN/kWpF9Kx+vPam8HBeg53OxS0MYd0+Iz9cjQ==" crossorigin="anonymous"></script>
+    <!-- bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- custom js -->
     <script src="scattor-plot.js"></script>
 </body>
 </html>

@@ -30,7 +30,7 @@ async function drawScatter() {
     window.innerHeight * 0.8,
   ])
   let dimensions = {
-    width: 1200,
+    width: width,
     height: width,
     margin: {
       top: 100,
@@ -39,19 +39,20 @@ async function drawScatter() {
       left: 50,
     },
   }
-  dimensions.boundedWidth = dimensions.width
-    - dimensions.margin.left
-    - dimensions.margin.right
-  dimensions.boundedHeight = dimensions.height
-    - dimensions.margin.top
-    - dimensions.margin.bottom
+  dimensions.boundedWidth = dimensions.width - dimensions.margin.left - dimensions.margin.right
+  dimensions.boundedHeight = dimensions.height - dimensions.margin.top - dimensions.margin.bottom
 
   // 3. Draw canvas
 
   const wrapper = d3.select("#wrapper")
     .append("svg")
-    .attr("width", dimensions.width)
-    .attr("height", dimensions.height)
+    .attr("viewBox", "0 0 800 800") 
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("class", "svg-content")
+                        
+    
+    // .attr("width", dimensions.width)
+    // .attr("height", dimensions.height)
 
   const bounds = wrapper.append("g")
       .style("transform", `translate(${
@@ -176,12 +177,13 @@ const drawDots = (dataset) => {
             .text("")
     }
     
-    tooltip.select("#url")
-        .html(`<a href="${datum.url}">View post</a>`)
+    // tooltip.select("#url")
+    //     .html(`<a href="${datum.url}">View post</a>`)
 
     tooltip.select("#flair")
         .text(datum.flair)
         .style("background-color", d => flairColorMap.get(datum['flair']))
+        .attr("class", "btn")
 
     const dateParser = d3.timeParse("%Y-%m-%d")
     const formatDate = d3.timeFormat("%B %-d, %Y")
@@ -211,183 +213,159 @@ const drawDots = (dataset) => {
 drawScatter()
 
 // LENGEND
-var legend_svg = d3.select("#legend")
+const legend_svg = d3.select("#legend")
+    .attr("height", "100%")
+    .attr("width", "100%")
 
 // support
 legend_svg.append("circle")
-    .attr("cx",100)
-    .attr("cy",160).attr("r", 6)
+    .attr("cx",20)
+    .attr("cy",160)
+    .attr("r", 6)
     .style("fill", "#0000a4")
 
 legend_svg.append("text")
-    .attr("x", 120)
+    .attr("x", 35)
     .attr("y", 160)
     .text("Support")
-    .style("font-size", "15px"
+    .style("font-size", "0.9em"
     ).attr("alignment-baseline","middle")
 
 // misleading title
 legend_svg.append("circle")
-    .attr("cx",100)
+    .attr("cx",20)
     .attr("cy",190).attr("r", 6)
     .style("fill", "#391dcd")
 
 legend_svg.append("text")
-    .attr("x", 120).attr("y", 190)
-    .text("Misleading and incorrect title")
-    .style("font-size", "15px")
+    .attr("x", 35)
+    .attr("y", 190)
+    .text("Misleading title")
+    .style("font-size", "0.9em")
     .attr("alignment-baseline","middle")
 
 // firsthand
 legend_svg.append("circle")
-    .attr("cx",100)
+    .attr("cx",20)
     .attr("cy",220)
     .attr("r", 6)
     .style("fill", "#512ed7")
 
 legend_svg.append("text")
-    .attr("x", 120)
+    .attr("x", 35)
     .attr("y", 220)
     .text("Firsthand Account")
-    .style("font-size", "15px")
+    .style("font-size", "0.9em")
     .attr("alignment-baseline","middle")
 
 // news
 legend_svg.append("circle")
-    .attr("cx",100)
+    .attr("cx",20)
     .attr("cy",250)
     .attr("r", 6)
     .style("fill", "#7951e2")
 
 legend_svg.append("text")
-    .attr("x", 120)
+    .attr("x", 35)
     .attr("y", 250)
     .text("News")
-    .style("font-size", "15px")
+    .style("font-size", "0.9em")
     .attr("alignment-baseline","middle")
 
 // trigger warning
 legend_svg.append("circle")
-    .attr("cx",100)
+    .attr("cx",20)
     .attr("cy",280)
     .attr("r", 6)
     .style("fill", "#8a63e4")
 
 legend_svg.append("text")
-    .attr("x", 120)
+    .attr("x", 35)
     .attr("y", 280)
     .text("Trigger Warning")
-    .style("font-size", "15px")
+    .style("font-size", "0.9em")
     .attr("alignment-baseline","middle")
 
 // resources
 legend_svg.append("circle")
-    .attr("cx",100)
+    .attr("cx",20)
     .attr("cy",310)
     .attr("r", 6)
     .style("fill", "#9a75e4")
 
 legend_svg.append("text")
-    .attr("x", 120)
+    .attr("x", 35)
     .attr("y", 310)
     .text("Resources")
-    .style("font-size", "15px")
+    .style("font-size", "0.9em")
     .attr("alignment-baseline","middle")
 
 // good nes
 legend_svg.append("circle")
-    .attr("cx",100)
+    .attr("cx",20)
     .attr("cy",340)
     .attr("r", 6)
     .style("fill", "#a888e3")
 
 legend_svg.append("text")
-    .attr("x", 120)
+    .attr("x", 35)
     .attr("y", 340)
     .text("Good News")
-    .style("font-size", "15px")
+    .style("font-size", "0.9em")
     .attr("alignment-baseline","middle")
 
 // misinformation
 legend_svg.append("circle")
-    .attr("cx",100)
+    .attr("cx",20)
     .attr("cy",370)
     .attr("r", 6)
     .style("fill", "#b49ae1")
 
 legend_svg.append("text")
-    .attr("x", 120)
+    .attr("x", 35)
     .attr("y", 370)
-    .text("Misinformation - debunked")
-    .style("font-size", "15px")
+    .text("Misinformation")
+    .style("font-size", "0.9em")
     .attr("alignment-baseline","middle")
 
 // quesitons
 legend_svg.append("circle")
-    .attr("cx",100)
+    .attr("cx",20)
     .attr("cy",400)
     .attr("r", 6)
     .style("fill", "#c0adde")
 
 legend_svg.append("text")
-    .attr("x", 120)
+    .attr("x", 35)
     .attr("y", 400)
     .text("Questions")
-    .style("font-size", "15px")
+    .style("font-size", "0.9em")
     .attr("alignment-baseline","middle")
 
 // discussion
 legend_svg.append("circle")
-    .attr("cx",100)
+    .attr("cx",20)
     .attr("cy",430)
     .attr("r", 6)
     .style("fill", "#cac0d9")
 
 legend_svg.append("text")
-    .attr("x", 120)
+    .attr("x", 35)
     .attr("y", 430)
     .text("Discussion")
-    .style("font-size", "15px")
+    .style("font-size", "0.9em")
     .attr("alignment-baseline","middle")
 
 // NA
 legend_svg.append("circle")
-    .attr("cx",100
-    ).attr("cy",460)
+    .attr("cx",20)
+    .attr("cy",460)
     .attr("r", 6)
     .style("fill", "#d4d4d4")
 
 legend_svg.append("text")
-    .attr("x", 120)
+    .attr("x", 35)
     .attr("y", 460)
     .text("NA")
-    .style("font-size", "15px")
+    .style("font-size", "0.9em")
     .attr("alignment-baseline","middle")
-
-// responsive chart
-function responsivefy(svg) {
-    // get container + svg aspect ratio
-    const wrapper = d3.select(svg.node().parentNode),
-        width = parseInt(svg.style("width")),
-        height = parseInt(svg.style("height")),
-        aspect = width / height;
-
-    // add viewBox and preserveAspectRatio properties,
-    // and call resize so that svg resizes on inital page load
-    svg.attr("viewBox", "0 0 " + width + " " + height)
-        .attr("perserveAspectRatio", "xMinYMin")
-        .call(resize);
-
-    // to register multiple listeners for same event type, 
-    // you need to add namespace, i.e., 'click.foo'
-    // necessary if you call invoke this function for multiple svgs
-    // api docs: https://github.com/mbostock/d3/wiki/Selections#on
-    d3.select(window).on("resize." + container.attr("id"), resize);
-
-    // get width of container and resize svg to fit it
-    function resize() {
-        var targetWidth = parseInt(container.style("width"));
-        svg.attr("width", targetWidth);
-        svg.attr("height", Math.round(targetWidth / aspect));
-    }
-}
