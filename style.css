@@ -18,6 +18,7 @@
     font-size: 1.4em;
     text-anchor: middle;
     transform: rotate(-90deg);
+    text-transform: capitalize;
     font-family: Trispace, sans-serif;
     margin-right: 5vw;
 }
@@ -40,6 +41,12 @@ body {
 
 html {
     scroll-behavior: smooth;
+}
+
+p, li {
+    font-weight: 300;
+    line-height: 2em;
+    font-size: 1.1em;
 }
 
 .tooltip {
@@ -114,13 +121,24 @@ html {
 }
 
 #dropdown {
-    display: block;
+    display: inline-flex;
     position: absolute;
     margin: 0 auto;
+    z-index: 100;
+    margin-right: 1.5em;
+}
+
+select {
+    align-items: center;
+
+}
+
+.form-inline .btn {
+    margin-left: 1.5em;
 }
 
 button#flair {
-    padding: 10px;
+    padding: 8px;
     border: none;
     color: white;
 }
@@ -143,6 +161,39 @@ button#flair {
 
 #legend text {
     font-size: 0.9em!important;
+}
+
+.img-mrg {
+    margin: 3em 0;
+}
+
+.content-mrg {
+    margin: 2em 0;
+}
+
+.resize {
+    width: 73%;
+}
+
+.resize-1 {
+    width: 60%;
+}
+
+.m-t {
+    margin-top: 3em;
+}
+
+.m-b {
+    margin-bottom: 3em;
+}
+
+p a {
+    color: #512ed7;
+}
+
+p a:hover {
+    text-decoration: none;
+    color: #000;
 }
 
 /* Smartphones (portrait and landscape) ----------- */

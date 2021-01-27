@@ -11,23 +11,253 @@
 <body>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10">
-                <h2>A reflection on how much I learned while failing miserably to find a story to tell</h2>
-
+            <div class="col-md-10 col-sm-12">
+                <h2>A reflection on what I learned while failing miserably to find a story to tell</h2>
+                <p class="m-t">My attempt on running a visualization-driven analysis of public vulnerabilities to better understand the societal perceptions of COVID-19.</p>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-md-9">
-                <!-- <div id="dropdown">
-                    <p><span><label for="y-axis">Toggle y-axis</label></span></p>
-                    <select id="y-value" class="selectpicker">
-                        <option value="Score">Score</option>
-                        <option value="Sentiment">Sentiment</option>
-                        <option value="Upvote Ratio">Upvote Ratio</option>
-                        <option value="Number of Comments">Number of Comments</option> 
-                    </select>
-                    <button class="btn" onclick="setGraph()">submit</button>
-                </div> -->
+            <div class="col-md-10 col-sm-12">
+                <div class="content-mrg">
+                    <h4>It's 2020 ～</h4>
+                    <p>I’m about to start my second semester of graduate school at the University of Miami.<br/> I’m excited and I’m taking on new challenges at school and BOOM!</p>
+                    <h4>CORONA!!!</h4>
+                </div>
+                <div style="width:100%;height:auto;padding-bottom:60%;position:relative;margin: 0 auto">
+                    <iframe src="https://giphy.com/embed/Tjjr8OXolrue0evTMx" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
+                <p class="m-t">
+                    While the rest of the world had begun implementing nationwide lockdowns, the US was still in denial and the number of confirmed cases and deaths just kept growing. 
+                    All of my classes became virtual and the life of work from home began.
+                </p>
+                <img src="https://cdn.vox-cdn.com/thumbor/GVCeaYb9zYq-w0_K2sxQasdT82I=/0x0:900x500/1820x1213/filters:focal(378x178:522x322):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/49493993/this-is-fine.0.jpg" class="img-fluid"/>
+                <p class="m-b">I don't know about you but at first I thought it was great — I got to cook more and I had a better sleep schedule — until work from home became living at work. </p>
+                <div style="width:60%;height:auto;padding-bottom:50%;position:relative;margin: 0 auto">
+                    <iframe src="https://giphy.com/embed/kaZdjMI1T0aXeGtN1Q" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
+                <p>My productivity dropped, my sense of time was completely messed up, and my stress level just kept escalating.</p>
+                <div style="width:50%;height:auto;padding-bottom:50%;position:relative;margin:0 auto">
+                    <iframe src="https://giphy.com/embed/l1KVaj5UcbHwrBMqI" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
+                <p>
+                    The endless uncertainties and the depressing COVID numbers on blast from every news organization on repeat. It’s hard not to feel extremely anxious, but at the same time, 
+                    I also feel extremely grateful for what I have — a roof over my head and being able to put food on the table while so many other people are struggling to do so. 
+                </p>
+                <p class="m-b">
+                    Years later, people will be studying the psychological effects this global pandemic brought onto the world. So I thought it would be interesting to create a visualization-driven 
+                    analysis on the personal & societal perceptions of COVID-19 through text analysis for one of my classes.
+                </p>
+                <div style="width:60%;height:auto;padding-bottom:40%;position:relative;margin:0 auto">
+                    <iframe src="https://giphy.com/embed/WP2MUeauAM3sLbOQyQ" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
+                <p class="m-t">
+                    I thought it would be cool to see how everyone’s coping, their vulnerabilities, and if there are any unexpected positive stories that we don’t really see in the news. 
+                    I wanted to make a point about how we are not alone in this and we can be resilient together! 
+                </p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-sm-12">
+                <p>
+                    So the goal is to collect all the post submissions from a subreddit group called <a href="//www.reddit.com/r/COVID19_support/" target="_blank">r/COVID19_support</a> 
+                    and analyze its themes and emotions using Natural Language Processing tools. 
+                </p>
+                <p>To give some context — everything about this project is an uncharted territory for me. Before this, I actually didn’t use Reddit on a daily basis, I’ve never coded in Python or R, and I knew absolutely nothing about Natural Language Processing! </p>
+                <div style="width:60%;height:auto;padding-bottom:40%;position:relative;margin:0 auto">
+                    <iframe src="https://giphy.com/embed/ma7VlDSlty3EA" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
+                <p class="m-t">
+                    I knew I was in for a huge learning curve and there were definitely times I just felt incredibly lost to the point I was ready to give up. But, in retrospect, there were three things that helped keep my sanity — finding tutorials that actually worked, 
+                    Professor Cairo’s guidance and support and last but not least, Lenny’s brilliant brain (s/o to Lenny)!
+                </p>
+                <h4 class="m-t">The art of googling the right answers</h4>
+                <div class="text-center">
+                    <img src="https://pbs.twimg.com/media/Dj_6KemUYAAKk5Q?format=jpg&name=medium" class="img-fluid img-mrg resize-1"/>
+                </div>
+                <p class="m-b">
+                    To start — here’s a tip to all the people that just started learning their first programming language: Google (or any search engine of your choice) is your new best friend as long as you know how to search for the right answers. 
+                    Chances are — somebody else already asked / answered the questions you have. Next thing you can do is try out their code examples / tutorials and see if they work on your end as well. If not, try the next one until something finally does. 
+                </p>
+                <div style="width:60%;height:auto;padding-bottom:50%;position:relative;margin:0 auto">
+                    <iframe src="https://giphy.com/embed/7NoNw4pMNTvgc" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
+                <p class="content-mrg">
+                    So I started out searching for how to scrape reddit data, and this is the <a href="//www.storybench.org/how-to-scrape-reddit-with-python/" target="_blank">tutorial</a> that worked for me. It uses a python package called <a href="//praw.readthedocs.io/en/latest/getting_started/installation.html" target="_blank">PRAW</a>(Python Reddit API Wrapper) and 
+                    it makes the process of scraping extremely easy and straightforward. The data attributes I’m most interested in are the submission title, body text, posted date / time, score (the number of upvotes minus the number of downvotes), upvote ratio, flair (used as a tagging 
+                    system for posts for filtering contents), and the url of the posts. 
+                </p>
+                <h4 class="content-mrg">Doing things the hard way will motivate you to do things the right way</h4>
+                <p class="m-t">
+                    After gathering all the data, the next step is to inspect and clean / preprocess it. It’s important to clean the data by removing unwanted characters such as punctuations or urls that are essentially the “noise” in the data. I found these two blog posts on preprocessing 
+                    text data extremely helpful:  <a href="//towardsdatascience.com/effectively-pre-processing-the-text-data-part-1-text-cleaning-9ecae119cb3e" target="_blank">text cleaning</a> + <a href="//towardsdatascience.com/sentiment-analysis-on-raw-text-using-amazon-imdb-and-yelp-f2547c805f1" target="_blank">implementation</a>. 
+                    For my dataset, I combined the title and body text and needed to remove the punctuations and urls. 
+                </p>
+                <p class="m-b">
+                    But after trying out a few tutorials using Python and R nothing panned out. I was worried I didn’t have enough time to do the analysis so I decided to clean the data manually. 
+                </p>
+                <div style="width:60%;height:auto;padding-bottom:40%;position:relative;margin: 0 auto">
+                    <iframe src="https://giphy.com/embed/AAsj7jdrHjtp6" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
+                <p class="m-b m-t">
+                    Yeah you read that right. I tried removing the urls in 800+ posts one by one and it took me forever. But by doing so I was able to jot down some of the recurring topics such as  questions about masks, 
+                    exposure risks, vaccines, sanitizers, symptoms, testings, obesity risks, schools reopening, people seeking support for their anxieties, depression and frustrations when someone is not taking COVID seriously, 
+                    as well as their first hand experiences with COVID, quarantine and how they’re coping with the whole situation, etc. 
+                </p>
+                <div style="width:60%;height:auto;padding-bottom:40%;position:relative;margin: 0 auto">
+                    <iframe src="https://giphy.com/embed/B4ORVnBvJCVvq" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
+                <p class="m-t m-b">
+                    But obviously it’s extremely inefficient and time consuming to do it manually, especially when there are new submissions coming in everyday. 
+                    So I ended up forcing myself to figure out how to do it the right way.
+                </p>
+                <div style="width:60%;height:auto;padding-bottom:50%;position:relative;margin:0 auto">
+                    <iframe src="https://giphy.com/embed/FZuRP6WaW5qg" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
+                <p class="m-b m-t">
+                    After 1000000x tries along with this <a href="//www.tidytextmining.com/tidytext.html" target="_blank">tutorial</a> and Lenny's help, I was finally able to clean the dataset. 
+                    Other than removing the urls, I was able to take out the common and custom stopwords (most common words in a language such as “of, are, the, it, is” 
+                    that usually don’t provide much analytical value) and tokenized the corpus (process of splitting a sentence into words). 
+                </p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-sm-12">
+                <h4 class="m-b">Now we’re getting to the fun part ～ data exploration and visualizations!</h4>
+                <p>So here are the questions I had in mind: </p>
+                <ul>
+                    <li>How is everyone coping?</li>
+                    <li>What are some positive stories I can highlight</li>
+                    <li>What are the topics being discussed in the subreddit?</li>
+                    <li>What's the distribution of each topic / flair being discussed and tagged over time?</li>
+                    <li>Is there a trend of topics over time that I can identify?</li>
+                    <li>Is the trend of the topics related to current events (of the time) somehow?</li>
+                    <li>Identify the sentiments of each post / topic?</li>
+                    <li>Plot correlations between the sentiment + score or upvote ratio</li>
+                </ul> 
+                <p>I did a really quick visualization on the number of posts each month (February to November) subsetted by the flairs. </p>
+                <div class="text-center">
+                    <img src="ss1.png" class="img-fluid img-mrg resize"/>
+                </div>
+                <p>
+                    Judging from the graph, it looks like most of the posts were tagged as support and a good amount of them were tagged as questions. OK now moving onto sentiment analysis. 
+                    Here is a very very rough explanation of what it does — sentiment analysis is the process of detecting positive or negative sentiment in text (this <a href="https://monkeylearn.com/sentiment-analysis/" target="_blank">site</a> has a more detailed 
+                    explanation if you’re interested). And basically there are different sets of lexicons that contain classified sentiments for certain words. For example, “happy” has a 
+                    positive sentiment and “sad” has a negative sentiment and as the program analyzes the corpus, it compiles a sentiment score based on how many positive or negative sentiments it has. 
+                    And this is the <a href="//www.tidytextmining.com/sentiment.html" target="_blank">tutorial</a> I used to analyze my dataset using R. 
+                </p>
+                <p>
+                    And because each post has different length (word count) so a post with a lot of text may contain more words that have sentiments and therefore a higher or lower sentiment score. 
+                </p>
+                <div style="width:60%;height:auto;padding-bottom:50%;position:relative;margin: 0 auto">
+                    <iframe src="https://giphy.com/embed/dJ4vNQ7r72pb4nDhN5" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
+                <p>
+                    So to bypass that, I basically calculated the sentiment score for each post and divided the score by the word count after removing the stop words. And this is what it looks like: 
+                </p>
+                <div class="text-center">
+                    <img src="ss2.png" class="img-fluid img-mrg resize"/>
+                </div>                
+                <p>The spikes above 0 are posts with a positive sentiment, and as you can see it's mostly very negative.</p>
+                <div style="width:50%;height:auto;padding-bottom:40%;position:relative;margin:0 auto">
+                    <iframe src="https://giphy.com/embed/Ph8OWoJA2M3eM" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
+                <p class="m-t">But there are a couple posts with positive sentiments! The submission with the most positive sentiment is this image: </p>
+                <div class="text-center">
+                    <img src="r_img.jpg" class="img-fluid img-mrg resize"/>
+
+                </div>
+                <p>
+                    However, there is one issue with this kind of sentiment analysis — if a person says they’re “not” happy the program doesn’t register that as a negative sentiment because it only looks at a word at a time. 
+                    Another example is “pretty bad” — where pretty is a positive term but bad has a negative term, so together they’re registered as neutral. So to have a deeper understanding of the relationship between words, 
+                    there is another analysis technique called — bigram or n-grams analysis. Essentially it tokenizes the corpus into consecutive sequences of words instead of into just single words. So to do that, 
+                    I followed this <a href="//www.tidytextmining.com/ngrams.html" target="_blank">tutorial</a>. 
+                </p>
+                <div id="bar"></div>
+                <p>I visualized this using R: the darker the arrow is the more frequent these two words were mentioned in the subreddit. </p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-sm-12">
+                <img src="ss4.png" class="img-fluid img-mrg"/>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-sm-12">
+                <p class="content-mrg">Ok I thought that was pretty cool — but as you can see, many people felt scared, worried and terrified. I hope they’re feeling better now with potential vaccines on the way. </p>
+                <div style="width:60%;height:auto;padding-bottom:40%;position:relative;margin:0 auto">
+                    <iframe src="https://giphy.com/embed/cN4QlPgacB1h6" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
+                <p>I’ve also tried looking at whether there is any correlation between the sentiment score and upvote ratio of each post by month. However, it doesn’t seem like there are any.</p>
+                <div class="text-center">
+                    <img src="ss5.png" class="img-fluid img-mrg resize"/>
+                </div>
+            </div>  
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-sm-12">
+                <p>
+                    Moving on to extracting the topics from the submissions — I found a couple tutorials on topic modeling. It’s a machine learning technique that scans a set of documents and detects 
+                    word and phrase patterns within them and then clustering word into groups that best represent the set of documents (read more about it <a href="//monkeylearn.com/blog/introduction-to-topic-modeling/" target="_blank">here</a>). 
+                    And this is the <a href="//juliasilge.com/blog/sherlock-holmes-stm/" target="_blank">tutorial</a> I followed. Honestly I don’t really know how it works and there are so many technical terms that got me like ???
+                </p>
+                <div class="text-center">
+                    <img class="img-fluid img-mrg resize" src="//e3.365dm.com/19/09/2048x1152/skynews-drew-scanlon-blinking-white-guy_4786055.jpg?bypass-service-worker&20190925134801"/>
+                </div>
+                <p>
+                    For example, there’s this tf–idf or TFIDF, which is a short for term frequency–inverse document frequency — essentially it is a numerical statistic that is intended to reflect how important a word is to a document in a collection or corpus. <br/>And this is what it looks like in R:
+                </p>
+                <div class="text-center">
+                    <img class="img-fluid img-mrg resize" src="ss6.png"/>
+                </div>
+                <p class="m-b">I mean it’s cool but honestly I’m not sure what to make of this.</p>
+                <div style="width:60%;height:auto;padding-bottom:50%;position:relative;margin:0 auto">
+                    <iframe src="https://giphy.com/embed/3ohc17IuNgUpALSaIM" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
+                <p class="m-t">As for topic modeling — I realized it doesn’t actually tell you what the topic is. It kind of just tells you hey these are the terms that are associated with this topic and the results are just not what I was expected.</p>
+                <div class="text-center">
+                    <img class="img-fluid img-mrg resize" src="ss7.png"/>
+                </div>                
+
+                <div style="width:50%;height:auto;padding-bottom:50%;position:relative;margin:0 auto">
+                    <iframe src="https://giphy.com/embed/xT0xeuOy2Fcl9vDGiA?video=0" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
+                <p class="m-t">
+                    So yeah... it’s safe to say that I failed miserably to find the answers to my questions or any interesting story to tell with my analysis. 
+                    There is a high chance that I messed up somewhere 🤔?  I don’t know but I sure did learn a bunch of new things in the process — some basic python and web scraping, using R to preprocess text data, 
+                    running sentiment analysis and visualizing data with ggplot! This is definitely a skill that I want to keep refining and getting better at! 
+                </p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-sm-12">
+                <div id="dropdown" class="d-flex flex-row">
+                    <div>
+                        <p><span><label for="y-axis">Toggle y</label></span></p>
+                        <div class="form-inline align-items-center">
+                            <select id="y-value" class="form-control selectpicker">
+                                <option value="score">Score</option>
+                                <option value="calculated_sentiment">Sentiment</option>
+                                <option value="upvote_ratio">Upvote Ratio</option>
+                                <option value="comms_num">Number of Comments</option> 
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <p><span><label for="x-axis">Toggle x</label></span></p>
+                        <div class="form-inline align-items-center">
+                            <select id="x-value" class="selectpicker form-control">
+                                <option value="timestamp">Timestamp</option> 
+                                <option value="score">Score</option>
+                                <option value="calculated_sentiment">Sentiment</option>
+                                <option value="upvote_ratio">Upvote Ratio</option>
+                                <option value="comms_num">Number of Comments</option> 
+                            </select>
+                            <button class="btn" onclick="setGraph()">submit</button>
+                        </div>
+                        
+                    </div>
+
+                </div>
                 <div id="wrapper" class="wrapper svg-container">
                     <div id="tooltip" class="tooltip">
                         <div class="tooltip-date">
@@ -45,17 +275,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div>
+                <div id="legend" class="m-hide">
                     <svg id="legend" class="m-hide"></svg>
                 </div>
             </div>
+
+
         </div>
-
-                
-
-        
     </div>
     
     <!-- d3 + delaunay -->
@@ -72,6 +298,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <!-- custom js -->
-    <script src="scattor-plot.js"></script>
+    <!-- <script src="scattor-plot.js"></script> -->
+    <script src="toggle-metrics.js"></script>
 </body>
 </html>

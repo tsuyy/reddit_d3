@@ -1,12 +1,14 @@
-async function drawScatter() {
-
+async function toggleMetrics(yMetric, xMetric) {
+  $('svg').remove();
   // 1. Access data
   let dataset = await d3.csv("sentiment_per_post.csv")
 
   const dateParser = d3.timeParse('%Y-%m-%d');
   const xAccessor = d => dateParser(d['timestamp']);
-  const yAccessor = d => +d.calculated_sentiment;
-//   const yAccessor = d => +d.upvote_ratio
+  // const xAccessor = d => +d.score;
+  const yAccessor = d => d[`${yMetric}`];
+
+  // const yAccessor = d => +d.upvote_ratio
 //   const colorAccessor = d => +d.upvote_ratio
   const flairAccessor = d => d.flair;
   const flairColorMap = new Map([["Support", '#0000a4'], 
@@ -47,7 +49,7 @@ async function drawScatter() {
   const wrapper = d3
     .select("#wrapper")
     .append("svg")
-    .attr("viewBox", "0 0 800 800") 
+    .attr("viewBox", "0 0 900 900") 
     .attr("preserveAspectRatio", "xMidYMid meet")
     .attr("class", "svg-content")
                         
@@ -67,11 +69,17 @@ async function drawScatter() {
     .scaleTime()
     .domain([xExtent[0], xExtent[1] * 1])
     .range([0, dimensions.boundedWidth]);
+    // const xScale = d3
+    // .scaleLinear()
+    // .domain([xExtent[0], xExtent[1] * 1])
+    // .range([0, dimensions.boundedWidth])
+    // .nice();
 
 
+  const yExtent = d3.extent(dataset, yAccessor);
   const yScale = d3
     .scaleLinear()
-    .domain([-1, d3.max(dataset, yAccessor)])
+    .domain([yExtent[0], yExtent[1]-1])
     .range([dimensions.boundedHeight, 0])
     .nice();
 
@@ -113,12 +121,13 @@ const drawDots = (dataset) => {
     .attr("class", "x-axis-label")
     .attr("x", dimensions.boundedWidth / 2)
     .attr("y", dimensions.margin.bottom)
-    .html("Month")
+    .html("month")
+
 
   const yAxisGenerator = d3
     .axisLeft()
     .scale(yScale)
-    .ticks(4)
+    .ticks(5)
 
   const yAxis = bounds
     .append("g")
@@ -129,7 +138,7 @@ const drawDots = (dataset) => {
     .attr("class", "y-axis-label")
     .attr("x", -dimensions.boundedHeight / 2)
     .attr("y", -dimensions.margin.left + 10)
-    .text("Sentiment")
+    .text(`${yMetric}`)
     .style("text-anchor", "middle")
 
 
@@ -151,7 +160,7 @@ const drawDots = (dataset) => {
     .append("path")
       .attr("class", "voronoi")
       .attr("d", (d,i) => voronoi.renderCell(i))
-    //   .attr("stroke", "cornflowerblue")
+      // .attr("stroke", "cornflowerblue")
       .on("mouseenter", onMouseEnter)
       .on("mouseleave", onMouseLeave)
 
@@ -181,8 +190,8 @@ const drawDots = (dataset) => {
         tooltip.select("#body").text("")
     }
     
-    // tooltip.select("#url")
-    //     .html(`<a href="${datum.url}">View post</a>`)
+    tooltip.select("#url")
+        .html(`<a href="${datum.url}">View post</a>`)
 
     tooltip.select("#flair")
         .text(datum.flair)
@@ -213,199 +222,18 @@ const drawDots = (dataset) => {
     tooltip.style("opacity", 0)
   }
 
-  const legend = d3
-    .select("#legend")
-    .attr("height", "100%")
-    .attr("width", "100%")
 
   const datasetByFalir = d3.group(dataset, flairAccessor)
 //   console.log(datasetByFalir.values())
 
-  const flairList = d3
-    .select(`#legend`)
-    .selectAll('p')
-    .data(datasetByFalir)
-    .enter()
-    .append('p')
-    .attr("class", "legendText")
-
-  flairList
-    .html(d => d[0])
-    .sort()
-    .style("font-size", "0.9em")
-    .attr("alignment-baseline","middle")
-    .on("click", function(click, d){
-        d3.selectAll(".legendText").style("opacity",1)
-    })
-
-  flairDot = legend
-    .selectAll("circle")
-    .data(datasetByFalir)
-    
-  flairDot.enter()
-    .append("circle")
-    .attr('cx',20 )
-    .attr('cy', 160 )
-    .attr('r', 6) 
-    .style("fill", d => { flairColorMap.get(d["flair"]) })
 
 
 
 
 }
-drawScatter()
+toggleMetrics('score')
 
-// LENGEND
-
-// support
-// legend_svg.append("circle")
-//     .attr("cx",20)
-//     .attr("cy",160)
-//     .attr("r", 6)
-//     .style("fill", "#0000a4")
-
-// legend_svg.append("text")
-//     .attr("x", 35)
-//     .attr("y", 160)
-//     .text("Support")
-//     .style("font-size", "0.9em")
-//     .attr("alignment-baseline","middle")
-
-// misleading title
-// legend_svg.append("circle")
-//     .attr("cx",20)
-//     .attr("cy",190).attr("r", 6)
-//     .style("fill", "#391dcd")
-
-// legend_svg.append("text")
-//     .attr("x", 35)
-//     .attr("y", 190)
-//     .text("Misleading title")
-//     .style("font-size", "0.9em")
-//     .attr("alignment-baseline","middle")
-
-// // firsthand
-// legend_svg.append("circle")
-//     .attr("cx",20)
-//     .attr("cy",220)
-//     .attr("r", 6)
-//     .style("fill", "#512ed7")
-
-// legend_svg.append("text")
-//     .attr("x", 35)
-//     .attr("y", 220)
-//     .text("Firsthand Account")
-//     .style("font-size", "0.9em")
-//     .attr("alignment-baseline","middle")
-
-// // news
-// legend_svg.append("circle")
-//     .attr("cx",20)
-//     .attr("cy",250)
-//     .attr("r", 6)
-//     .style("fill", "#7951e2")
-
-// legend_svg.append("text")
-//     .attr("x", 35)
-//     .attr("y", 250)
-//     .text("News")
-//     .style("font-size", "0.9em")
-//     .attr("alignment-baseline","middle")
-
-// // trigger warning
-// legend_svg.append("circle")
-//     .attr("cx",20)
-//     .attr("cy",280)
-//     .attr("r", 6)
-//     .style("fill", "#8a63e4")
-
-// legend_svg.append("text")
-//     .attr("x", 35)
-//     .attr("y", 280)
-//     .text("Trigger Warning")
-//     .style("font-size", "0.9em")
-//     .attr("alignment-baseline","middle")
-
-// // resources
-// legend_svg.append("circle")
-//     .attr("cx",20)
-//     .attr("cy",310)
-//     .attr("r", 6)
-//     .style("fill", "#9a75e4")
-
-// legend_svg.append("text")
-//     .attr("x", 35)
-//     .attr("y", 310)
-//     .text("Resources")
-//     .style("font-size", "0.9em")
-//     .attr("alignment-baseline","middle")
-
-// // good nes
-// legend_svg.append("circle")
-//     .attr("cx",20)
-//     .attr("cy",340)
-//     .attr("r", 6)
-//     .style("fill", "#a888e3")
-
-// legend_svg.append("text")
-//     .attr("x", 35)
-//     .attr("y", 340)
-//     .text("Good News")
-//     .style("font-size", "0.9em")
-//     .attr("alignment-baseline","middle")
-
-// // misinformation
-// legend_svg.append("circle")
-//     .attr("cx",20)
-//     .attr("cy",370)
-//     .attr("r", 6)
-//     .style("fill", "#b49ae1")
-
-// legend_svg.append("text")
-//     .attr("x", 35)
-//     .attr("y", 370)
-//     .text("Misinformation")
-//     .style("font-size", "0.9em")
-//     .attr("alignment-baseline","middle")
-
-// // quesitons
-// legend_svg.append("circle")
-//     .attr("cx",20)
-//     .attr("cy",400)
-//     .attr("r", 6)
-//     .style("fill", "#c0adde")
-
-// legend_svg.append("text")
-//     .attr("x", 35)
-//     .attr("y", 400)
-//     .text("Questions")
-//     .style("font-size", "0.9em")
-//     .attr("alignment-baseline","middle")
-
-// // discussion
-// legend_svg.append("circle")
-//     .attr("cx",20)
-//     .attr("cy",430)
-//     .attr("r", 6)
-//     .style("fill", "#cac0d9")
-
-// legend_svg.append("text")
-//     .attr("x", 35)
-//     .attr("y", 430)
-//     .text("Discussion")
-//     .style("font-size", "0.9em")
-//     .attr("alignment-baseline","middle")
-
-// // NA
-// legend_svg.append("circle")
-//     .attr("cx",20)
-//     .attr("cy",460)
-//     .attr("r", 6)
-//     .style("fill", "#d4d4d4")
-
-// legend_svg.append("text")
-//     .attr("x", 35)
-//     .attr("y", 460)
-//     .text("NA")
-//     .style("font-size", "0.9em")
-//     .attr("alignment-baseline","middle")
+const setGraph = () => {
+  toggleMetrics($('#y-value').val());
+  // console.log($('#y-value').val())
+}
