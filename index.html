@@ -13,7 +13,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-sm-12">
                 <h2>A reflection on what I learned while failing miserably to find a story to tell</h2>
-                <p class="m-t">My attempt on running a visualization-driven analysis of public vulnerabilities to better understand the societal perceptions of COVID-19.</p>
+                <p class="m-t">This is my attempt on running a visualization-driven analysis of public vulnerabilities to better understand the societal perceptions of COVID-19.</p>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -35,7 +35,7 @@
                 <div style="width:60%;height:auto;padding-bottom:50%;position:relative;margin: 0 auto">
                     <iframe src="https://giphy.com/embed/kaZdjMI1T0aXeGtN1Q" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                 </div>
-                <p>My productivity dropped, my sense of time was completely messed up, and my stress level just kept escalating.</p>
+                <p>My productivity dropped, my sense of time was completely messed up, and my stress level kept escalating.</p>
                 <div style="width:50%;height:auto;padding-bottom:50%;position:relative;margin:0 auto">
                     <iframe src="https://giphy.com/embed/l1KVaj5UcbHwrBMqI" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                 </div>
@@ -67,7 +67,7 @@
                     <iframe src="https://giphy.com/embed/ma7VlDSlty3EA" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                 </div>
                 <p class="m-t">
-                    I knew I was in for a huge learning curve and there were definitely times I just felt incredibly lost to the point I was ready to give up. But, in retrospect, there were three things that helped keep my sanity — finding tutorials that actually worked, 
+                    I knew I was in for a huge learning curve and there were definitely times I felt incredibly lost to the point I was ready to give up. But, in retrospect, there were three things that helped keep my sanity — finding tutorials that actually worked, 
                     Professor Cairo’s guidance and support and last but not least, Lenny’s brilliant brain (s/o to Lenny)!
                 </p>
                 <h4 class="m-t">The art of googling the right answers</h4>
@@ -169,7 +169,7 @@
                 <p>
                     However, there is one issue with this kind of sentiment analysis — if a person says they’re “not” happy the program doesn’t register that as a negative sentiment because it only looks at a word at a time. 
                     Another example is “pretty bad” — where pretty is a positive term but bad has a negative term, so together they’re registered as neutral. So to have a deeper understanding of the relationship between words, 
-                    there is another analysis technique called — bigram or n-grams analysis. Essentially it tokenizes the corpus into consecutive sequences of words instead of into just single words. So to do that, 
+                    there is another analysis technique called — bigram or n-grams analysis. Essentially it tokenizes the corpus into consecutive sequences of words instead of into single words. So to do that, 
                     I followed this <a href="//www.tidytextmining.com/ngrams.html" target="_blank">tutorial</a>. 
                 </p>
                 <div id="bar"></div>
@@ -183,7 +183,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-10 col-sm-12">
-                <p class="content-mrg">Ok I thought that was pretty cool — but as you can see, many people felt scared, worried and terrified. I hope they’re feeling better now with potential vaccines on the way. </p>
+                <p class="content-mrg">Ok I thought that was pretty cool — but as you can see, many people felt scared, worried and terrified. I hope they’re feeling better now with the vaccines on the way. </p>
                 <div style="width:60%;height:auto;padding-bottom:40%;position:relative;margin:0 auto">
                     <iframe src="https://giphy.com/embed/cN4QlPgacB1h6" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                 </div>
@@ -213,7 +213,7 @@
                 <div style="width:60%;height:auto;padding-bottom:50%;position:relative;margin:0 auto">
                     <iframe src="https://giphy.com/embed/3ohc17IuNgUpALSaIM" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                 </div>
-                <p class="m-t">As for topic modeling — I realized it doesn’t actually tell you what the topic is. It kind of just tells you hey these are the terms that are associated with this topic and the results are just not what I was expected.</p>
+                <p class="m-t">As for topic modeling — I realized it doesn’t actually tell you what the topic is. It just tells you hey these are the terms that are associated with this topic and the results are not really what I was expecting.</p>
                 <div class="text-center">
                     <img class="img-fluid img-mrg resize" src="ss7.png"/>
                 </div>                
@@ -223,8 +223,11 @@
                 </div>
                 <p class="m-t">
                     So yeah... it’s safe to say that I failed miserably to find the answers to my questions or any interesting story to tell with my analysis. 
-                    There is a high chance that I messed up somewhere 🤔?  I don’t know but I sure did learn a bunch of new things in the process — some basic python and web scraping, using R to preprocess text data, 
+                    There is a high chance that maybe I messed up somewhere 🤔?  I don’t know but I sure did learn a bunch of new things in the process — some basic python and web scraping, using R to preprocess text data, 
                     running sentiment analysis and visualizing data with ggplot! This is definitely a skill that I want to keep refining and getting better at! 
+                </p>
+                <p class="m-t m-b">
+                    To conclude this little experiment, I created an interactive chart for you to explore the data yourself using <a href="https://d3js.org/" target="_blank">d3.js</a>!
                 </p>
             </div>
         </div>
@@ -240,10 +243,12 @@
                                 <option value="upvote_ratio">Upvote Ratio</option>
                                 <option value="comms_num">Number of Comments</option> 
                             </select>
+                            <button class="btn" onclick="setGraph()">submit</button>
+
                         </div>
                     </div>
                     <div>
-                        <p><span><label for="x-axis">Toggle x</label></span></p>
+                        <!-- <p><span><label for="x-axis">Toggle x</label></span></p>
                         <div class="form-inline align-items-center">
                             <select id="x-value" class="selectpicker form-control">
                                 <option value="timestamp">Timestamp</option> 
@@ -253,7 +258,7 @@
                                 <option value="comms_num">Number of Comments</option> 
                             </select>
                             <button class="btn" onclick="setGraph()">submit</button>
-                        </div>
+                        </div> -->
                         
                     </div>
 

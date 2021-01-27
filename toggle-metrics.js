@@ -79,7 +79,7 @@ async function toggleMetrics(yMetric, xMetric) {
   const yExtent = d3.extent(dataset, yAccessor);
   const yScale = d3
     .scaleLinear()
-    .domain([yExtent[0], yExtent[1]-1])
+    .domain([yExtent[0], yExtent[1]])
     .range([dimensions.boundedHeight, 0])
     .nice();
 
@@ -222,11 +222,41 @@ const drawDots = (dataset) => {
     tooltip.style("opacity", 0)
   }
 
+  // const legend = d3
+  //   .select("#legend")
+  //   .attr("height", "100%")
+  //   .attr("width", "100%")
 
   const datasetByFalir = d3.group(dataset, flairAccessor)
 //   console.log(datasetByFalir.values())
 
+  // const flairList = d3
+  //   .select(`#legend`)
+  //   .selectAll('p')
+  //   .data(datasetByFalir)
+  //   .enter()
+  //   .append('p')
+  //   .attr("class", "legendText")
 
+  // flairList
+  //   .html(d => d[0])
+  //   .sort()
+  //   .style("font-size", "0.9em")
+  //   .attr("alignment-baseline","middle")
+  //   .on("click", function(click, d){
+  //       d3.selectAll(".legendText").style("opacity",1)
+  //   })
+
+  // flairDot = legend
+  //   .selectAll("circle")
+  //   .data(datasetByFalir)
+    
+  // flairDot.enter()
+  //   .append("circle")
+  //   .attr('cx',20 )
+  //   .attr('cy', 160 )
+  //   .attr('r', 6) 
+  //   .style("fill", d => { flairColorMap.get(d["flair"]) })
 
 
 
@@ -237,3 +267,4 @@ const setGraph = () => {
   toggleMetrics($('#y-value').val());
   // console.log($('#y-value').val())
 }
+
