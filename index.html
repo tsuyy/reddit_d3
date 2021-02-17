@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css" type="text/css"></link>
-    <title>Reddit Project ~ Scatter Plot</title>
+    <title>Reddit Project ~</title>
         <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -13,18 +13,82 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-sm-12">
                 <h2>A reflection on what I learned while failing miserably to find a story to tell</h2>
-                <p class="m-t">This is my attempt on running a visualization-driven analysis of public vulnerabilities to better understand the societal perceptions of COVID-19.</p>
+                <p class="m-t">This is my attempt on developing a visualization-driven analysis on public vulnerabilities and societal perceptions of COVID-19 through text data.</p>
+                <p class="m-b">
+                    Now, take a look at the interactive chart below and tell me — do you notice anything interesting?
+                </p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-sm-12">
+                <div id="dropdown" class="d-flex flex-row">
+                    <div>
+                        <p><span><label for="y-axis">Toggle y</label></span></p>
+                        <div class="form-inline align-items-center">
+                            <select id="y-value" class="form-control selectpicker">
+                                <option value="score">Score</option>
+                                <option value="calculated_sentiment">Sentiment</option>
+                                <option value="upvote_ratio">Upvote Ratio</option>
+                                <option value="comms_num">Number of Comments</option> 
+                            </select>
+                            <button class="btn" onclick="setGraph()">submit</button>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- <p><span><label for="x-axis">Toggle x</label></span></p>
+                        <div class="form-inline align-items-center">
+                            <select id="x-value" class="selectpicker form-control">
+                                <option value="timestamp">Timestamp</option> 
+                                <option value="score">Score</option>
+                                <option value="calculated_sentiment">Sentiment</option>
+                                <option value="upvote_ratio">Upvote Ratio</option>
+                                <option value="comms_num">Number of Comments</option> 
+                            </select>
+                            <button class="btn" onclick="setGraph()">submit</button>
+                        </div> -->
+                        
+                    </div>
+                </div>
+                <div id="wrapper" class="wrapper svg-container">
+                    <div id="tooltip" class="tooltip">
+                        <div class="tooltip-date">
+                            <span id="date"></span>
+                        </div>
+                        <div class="tooltip-post">
+                            <h6 id="title"></h6>
+                            <span id="body"></span>
+                        </div>
+                        <!-- <div class="tooltip-sentiment"></br>
+                            Sentiment: <span id="sentiment"></span>
+                        </div> -->
+                        <div class="tooltip-flair"></br>
+                            <button id="flair"></button>
+                        </div>
+                    </div>
+                </div>
+                <div id="legend" class="m-hide">
+                    <svg id="legend" class="m-hide"></svg>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-sm-12">
+                <p>Well, I don't... </p>
+                <p>
+                    I created this with <a href="https://d3js.org/" target="_blank">d3.js</a>, hoping to discover
+                    hidden stories or patterns from the massive user generated content I scraped from the subreddit <a href="//www.reddit.com/r/COVID19_support/" target="_blank">r/COVID19_support</a>.
+                    And it's safe to say that I have failed miserably to find an interesting story to tell. Although I failed to achieve the goals I've set out for this project, I am incredibly humbled by how much I learned in the process. 
+                    I picked up some basic python for webscraping, R to preprocess raw text data, for running sentiment analysis and visualizations with ggplot!
+                </p>
+                <p>All of which seemed very much helplessly impossible (for me at least), but here it is — my uncut story of embracing failures and all the hurdles.</p>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-10 col-sm-12">
                 <div class="content-mrg">
-                    <h4>It's 2020 ～</h4>
-                    <p>I’m about to start my second semester of graduate school at the University of Miami.<br/> I’m excited and I’m taking on new challenges at school and BOOM!</p>
-                    <h4>CORONA!!!</h4>
-                </div>
-                <div style="width:100%;height:auto;padding-bottom:60%;position:relative;margin: 0 auto">
-                    <iframe src="https://giphy.com/embed/Tjjr8OXolrue0evTMx" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                    <h4 class="m-b">How it started ...</h4>
+                    <p>It was 2020 and I’m about to start my second semester of graduate school at the University of Miami. I’m excited and I’m taking on new challenges at school and BOOM!</p>
+                    <h4 class="m-t">CORONA!!!</h4>
                 </div>
                 <p class="m-t">
                     While the rest of the world had begun implementing nationwide lockdowns, the US was still in denial and the number of confirmed cases and deaths just kept growing. 
@@ -59,15 +123,15 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-sm-12">
                 <p>
-                    So the goal is to collect all the post submissions from a subreddit group called <a href="//www.reddit.com/r/COVID19_support/" target="_blank">r/COVID19_support</a> 
-                    and analyze its themes and emotions using Natural Language Processing tools. 
+                    So the goal is to collect all the post submissions from the subreddit <a href="//www.reddit.com/r/COVID19_support/" target="_blank">r/COVID19_support</a> 
+                    and analyze the themes and emotions using Natural Language Processing tools. 
                 </p>
-                <p>To give some context — everything about this project is an uncharted territory for me. Before this, I actually didn’t use Reddit on a daily basis, I’ve never coded in Python or R, and I knew absolutely nothing about Natural Language Processing! </p>
+                <p>To give some context — everything about this project is an uncharted territory for me. Before this, I actually didn’t use Reddit on a daily basis, I’ve never coded in Python or R, and I knew absolutely nothing about <a href="//en.wikipedia.org/wiki/Natural_language_processing" target="_blank">Natural Language Processing</a>!</p>
                 <div style="width:60%;height:auto;padding-bottom:40%;position:relative;margin:0 auto">
                     <iframe src="https://giphy.com/embed/ma7VlDSlty3EA" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                 </div>
                 <p class="m-t">
-                    I knew I was in for a huge learning curve and there were definitely times I felt incredibly lost to the point I was ready to give up. But, in retrospect, there were three things that helped keep my sanity — finding tutorials that actually worked, 
+                    I was in for a huge learning curve and there were definitely times I felt that I was ready to give up. But, in retrospect, there were three things that helped keep my sanity — finding tutorials that actually worked, 
                     Professor Cairo’s guidance and support and last but not least, Lenny’s brilliant brain (s/o to Lenny)!
                 </p>
                 <h4 class="m-t">The art of googling the right answers</h4>
@@ -103,16 +167,10 @@
                     exposure risks, vaccines, sanitizers, symptoms, testings, obesity risks, schools reopening, people seeking support for their anxieties, depression and frustrations when someone is not taking COVID seriously, 
                     as well as their first hand experiences with COVID, quarantine and how they’re coping with the whole situation, etc. 
                 </p>
-                <div style="width:60%;height:auto;padding-bottom:40%;position:relative;margin: 0 auto">
-                    <iframe src="https://giphy.com/embed/B4ORVnBvJCVvq" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-                </div>
                 <p class="m-t m-b">
                     But obviously it’s extremely inefficient and time consuming to do it manually, especially when there are new submissions coming in everyday. 
                     So I ended up forcing myself to figure out how to do it the right way.
                 </p>
-                <div style="width:60%;height:auto;padding-bottom:50%;position:relative;margin:0 auto">
-                    <iframe src="https://giphy.com/embed/FZuRP6WaW5qg" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-                </div>
                 <p class="m-b m-t">
                     After 1000000x tries along with this <a href="//www.tidytextmining.com/tidytext.html" target="_blank">tutorial</a> and Lenny's help, I was finally able to clean the dataset. 
                     Other than removing the urls, I was able to take out the common and custom stopwords (most common words in a language such as “of, are, the, it, is” 
@@ -134,7 +192,7 @@
                     <li>Identify the sentiments of each post / topic?</li>
                     <li>Plot correlations between the sentiment + score or upvote ratio</li>
                 </ul> 
-                <p>I did a really quick visualization on the number of posts each month (February to November) subsetted by the flairs. </p>
+                <p class="m-t">I did a really quick visualization on the number of posts each month (February to November) subsetted by the flairs. </p>
                 <div class="text-center">
                     <img src="ss1.png" class="img-fluid img-mrg resize"/>
                 </div>
@@ -148,20 +206,13 @@
                 <p>
                     And because each post has different length (word count) so a post with a lot of text may contain more words that have sentiments and therefore a higher or lower sentiment score. 
                 </p>
-                <div style="width:60%;height:auto;padding-bottom:50%;position:relative;margin: 0 auto">
-                    <iframe src="https://giphy.com/embed/dJ4vNQ7r72pb4nDhN5" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-                </div>
                 <p>
                     So to bypass that, I basically calculated the sentiment score for each post and divided the score by the word count after removing the stop words. And this is what it looks like: 
                 </p>
                 <div class="text-center">
                     <img src="ss2.png" class="img-fluid img-mrg resize"/>
                 </div>                
-                <p>The spikes above 0 are posts with a positive sentiment, and as you can see it's mostly very negative.</p>
-                <div style="width:50%;height:auto;padding-bottom:40%;position:relative;margin:0 auto">
-                    <iframe src="https://giphy.com/embed/Ph8OWoJA2M3eM" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-                </div>
-                <p class="m-t">But there are a couple posts with positive sentiments! The submission with the most positive sentiment is this image: </p>
+                <p>The spikes above 0 are posts with a positive sentiment, and as you can see it's mostly very negative. But there are a couple posts with positive sentiments! The submission with the most positive sentiment is this image: </p>
                 <div class="text-center">
                     <img src="r_img.jpg" class="img-fluid img-mrg resize"/>
 
@@ -184,9 +235,6 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-sm-12">
                 <p class="content-mrg">Ok I thought that was pretty cool — but as you can see, many people felt scared, worried and terrified. I hope they’re feeling better now with the vaccines on the way. </p>
-                <div style="width:60%;height:auto;padding-bottom:40%;position:relative;margin:0 auto">
-                    <iframe src="https://giphy.com/embed/cN4QlPgacB1h6" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-                </div>
                 <p>I’ve also tried looking at whether there is any correlation between the sentiment score and upvote ratio of each post by month. However, it doesn’t seem like there are any.</p>
                 <div class="text-center">
                     <img src="ss5.png" class="img-fluid img-mrg resize"/>
@@ -195,25 +243,22 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-10 col-sm-12">
-                <p>
+                <p class="m-b">
                     Moving on to extracting the topics from the submissions — I found a couple tutorials on topic modeling. It’s a machine learning technique that scans a set of documents and detects 
                     word and phrase patterns within them and then clustering word into groups that best represent the set of documents (read more about it <a href="//monkeylearn.com/blog/introduction-to-topic-modeling/" target="_blank">here</a>). 
                     And this is the <a href="//juliasilge.com/blog/sherlock-holmes-stm/" target="_blank">tutorial</a> I followed. Honestly I don’t really know how it works and there are so many technical terms that got me like ???
                 </p>
-                <div class="text-center">
-                    <img class="img-fluid img-mrg resize" src="//e3.365dm.com/19/09/2048x1152/skynews-drew-scanlon-blinking-white-guy_4786055.jpg?bypass-service-worker&20190925134801"/>
+                <div style="width:60%;height:auto;padding-bottom:50%;position:relative;margin:0 auto">
+                    <iframe src="https://giphy.com/embed/3ohc17IuNgUpALSaIM" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                 </div>
-                <p>
+                <p class="m-t">
                     For example, there’s this tf–idf or TFIDF, which is a short for term frequency–inverse document frequency — essentially it is a numerical statistic that is intended to reflect how important a word is to a document in a collection or corpus. <br/>And this is what it looks like in R:
                 </p>
                 <div class="text-center">
                     <img class="img-fluid img-mrg resize" src="ss6.png"/>
                 </div>
-                <p class="m-b">I mean it’s cool but honestly I’m not sure what to make of this.</p>
-                <div style="width:60%;height:auto;padding-bottom:50%;position:relative;margin:0 auto">
-                    <iframe src="https://giphy.com/embed/3ohc17IuNgUpALSaIM" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-                </div>
-                <p class="m-t">As for topic modeling — I realized it doesn’t actually tell you what the topic is. It just tells you hey these are the terms that are associated with this topic and the results are not really what I was expecting.</p>
+                <p>I mean it’s cool but honestly I’m not sure what to make of this.</p>
+                <p>As for topic modeling — I realized it doesn’t actually tell you what the topic is. It just tells you hey these are the terms that are associated with this topic and the results are not really what I was expecting.</p>
                 <div class="text-center">
                     <img class="img-fluid img-mrg resize" src="ss7.png"/>
                 </div>                
@@ -222,70 +267,10 @@
                     <iframe src="https://giphy.com/embed/xT0xeuOy2Fcl9vDGiA?video=0" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                 </div>
                 <p class="m-t">
-                    So yeah... it’s safe to say that I failed miserably to find the answers to my questions or any interesting story to tell with my analysis. 
-                    There is a high chance that maybe I messed up somewhere 🤔?  I don’t know but I sure did learn a bunch of new things in the process — some basic python and web scraping, using R to preprocess text data, 
-                    running sentiment analysis and visualizing data with ggplot! This is definitely a skill that I want to keep refining and getting better at! 
-                </p>
-                <p class="m-t m-b">
-                    To conclude this little experiment, I created an interactive chart for you to explore the data yourself using <a href="https://d3js.org/" target="_blank">d3.js</a>!
+                    So yeah... I failed miserably to find the answers to my questions / any interesting stories to tell with my analysis. There is a high chance that I definitely messed up somewhere 🤔 
+                    I don’t know but I am proud of my journey and want to make a point about the valuable lessons you can gain from embracing your failures!
                 </p>
             </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-10 col-sm-12">
-                <div id="dropdown" class="d-flex flex-row">
-                    <div>
-                        <p><span><label for="y-axis">Toggle y</label></span></p>
-                        <div class="form-inline align-items-center">
-                            <select id="y-value" class="form-control selectpicker">
-                                <option value="score">Score</option>
-                                <option value="calculated_sentiment">Sentiment</option>
-                                <option value="upvote_ratio">Upvote Ratio</option>
-                                <option value="comms_num">Number of Comments</option> 
-                            </select>
-                            <button class="btn" onclick="setGraph()">submit</button>
-
-                        </div>
-                    </div>
-                    <div>
-                        <!-- <p><span><label for="x-axis">Toggle x</label></span></p>
-                        <div class="form-inline align-items-center">
-                            <select id="x-value" class="selectpicker form-control">
-                                <option value="timestamp">Timestamp</option> 
-                                <option value="score">Score</option>
-                                <option value="calculated_sentiment">Sentiment</option>
-                                <option value="upvote_ratio">Upvote Ratio</option>
-                                <option value="comms_num">Number of Comments</option> 
-                            </select>
-                            <button class="btn" onclick="setGraph()">submit</button>
-                        </div> -->
-                        
-                    </div>
-
-                </div>
-                <div id="wrapper" class="wrapper svg-container">
-                    <div id="tooltip" class="tooltip">
-                        <div class="tooltip-date">
-                            <span id="date"></span>
-                        </div>
-                        <div class="tooltip-post">
-                            <h6 id="title"></h6>
-                            <span id="body"></span>
-                        </div>
-                        <!-- <div class="tooltip-sentiment"></br>
-                            Sentiment: <span id="sentiment"></span>
-                        </div> -->
-                        <div class="tooltip-flair"></br>
-                            <button id="flair"></button>
-                        </div>
-                    </div>
-                </div>
-                <div id="legend" class="m-hide">
-                    <svg id="legend" class="m-hide"></svg>
-                </div>
-            </div>
-
-
         </div>
     </div>
     
