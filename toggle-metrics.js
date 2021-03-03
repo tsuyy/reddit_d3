@@ -49,7 +49,7 @@ async function toggleMetrics(yMetric, xMetric) {
   const wrapper = d3
     .select("#wrapper")
     .append("svg")
-    .attr("viewBox", "0 0 900 900") 
+    .attr("viewBox", "0 0 800 800") 
     .attr("preserveAspectRatio", "xMidYMid meet")
     .attr("class", "svg-content")
                         
@@ -108,7 +108,8 @@ const drawDots = (dataset) => {
 
   // 6. Draw peripherals
 
-  const xAxisGenerator = d3.axisBottom()
+  const xAxisGenerator = d3
+    .axisBottom()
     .scale(xScale)
 
   const xAxis = bounds
